@@ -5,7 +5,7 @@ import './App.css';
 import Todos from './components/Todos';
 import AddTodo from './components/AddTodo';
 import About from './components/pages/About';
-import {v4 as uuid} from 'uuid';
+// import {v4 as uuid} from 'uuid';
 import Axios from 'axios';
 
 class App extends Component {
@@ -30,8 +30,10 @@ class App extends Component {
     ]
   };
 
+  // Get request to API to retrieve todo list items
   componentDidMount() {
     Axios.get('http://jsonplaceholder.typicode.com/todos?_limit=5')
+    // Sets the state to the data from the API
       .then(res => this.setState({ todos: res.data }))
   }
 
@@ -57,12 +59,20 @@ remove = (id) => {
 
 // Add Todo
 addTodo = (title) => {
-  const newTodo = {
-    id: uuid(),
+  // const newTodo = {
+  //   id: uuid(),
+  //   title: title,
+  //   completed: false,
+  // }
+  // Makes post request to same API link as above
+  Axios.post('http://jsonplaceholder.typicode.com/todos', {
+    // Sets the title and status of new task
     title: title,
     completed: false,
-  }
-  this.setState({ todos: [...this.state.todos, newTodo]});
+  })
+    // Establishes the new task and reflects the data 
+    .then(res => this.setState({ todos: [...this.state.todos, res.data] }));
+  
 }
 
   // Render's the page
