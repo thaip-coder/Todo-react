@@ -24,23 +24,27 @@ class App extends Component {
     ]
   };
 
+// Method to toggle complete status
 markComplete = (id) => {
+  // Sets the state of completed status
   this.setState({ todos: this.state.todos.map(todo => {
+    // Checks for id of a todo item that is clicked
     if(todo.id === id) {
       // Will set the completed state to the opposite of what it currently is. Toggles completed status.
       todo.completed = !todo.completed
     }
+    // Updates status visibly
     return todo;
-  }) })
-}
+  }) });
+};
 
-render() {
-  return (
-    <div className="App">
-      <Todos todos={this.state.todos}  markComplete={this.markComplete}/>
-    </div>
-  );
-}
-}
+  render() {
+    return (
+      <div className="App">
+        <Todos todos={this.state.todos}  markComplete={this.markComplete}/>
+      </div>
+    );
+  };
+};
 
 export default App;
