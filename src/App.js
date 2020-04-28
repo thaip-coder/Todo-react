@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import { BrowserRouter as Router, Route } from 'react-router-dom';
 import Header from './components/layout/Header';
 import './App.css';
 import Todos from './components/Todos';
@@ -59,13 +60,19 @@ addTodo = (title) => {
   // Render's the page
   render() {
     return (
-      <div className="App">
-        <div className='container'>
-          <Header />
-          <AddTodo addTodo={this.addTodo} />
-          <Todos todos={this.state.todos}  markComplete={this.markComplete} remove={this.remove}/>
+      <Router>
+        <div className="App">
+          <div className='container'>
+            <Header />
+            <Route path='/' render={props => (
+              <React.Fragment>
+                  <AddTodo addTodo={this.addTodo} />
+                  <Todos todos={this.state.todos}  markComplete={this.markComplete} remove={this.remove}/>
+              </React.Fragment>
+            )} />
+          </div>
         </div>
-      </div>
+      </Router>
     );
   };
 };
