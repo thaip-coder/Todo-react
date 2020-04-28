@@ -41,13 +41,18 @@ markComplete = (id) => {
 
 // Remove todo item
 remove = (id) => {
-  // Use filter method to loop through and returns an array given a condition
+  // Use filter method (spread operater) to loop through and returns an array given a condition and return a new array
   this.setState({ todos: [...this.state.todos.filter(todo => todo.id !== id)] })
 };
 
 // Add Todo
 addTodo = (title) => {
-  console.log(title)
+  const newTodo = {
+    id: 4,
+    title: title,
+    completed: false,
+  }
+  this.setState({ todos: [...this.state.todos, newTodo]});
 }
 
   // Render's the page
