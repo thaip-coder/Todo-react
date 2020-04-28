@@ -53,8 +53,12 @@ markComplete = (id) => {
 
 // Remove todo item
 remove = (id) => {
-  // Use filter method (spread operater) to loop through and returns an array given a condition and return a new array
-  this.setState({ todos: [...this.state.todos.filter(todo => todo.id !== id)] })
+  // Delete request 
+  Axios.delete(`http://jsonplaceholder.typicode.com/todos/${id}`)
+    .then(res => 
+      // Use filter method (spread operater) to loop through and returns an array given a condition and return a new array
+      this.setState({ todos: [...this.state.todos.filter(todo => todo.id !== id)] }));
+  
 };
 
 // Add Todo
