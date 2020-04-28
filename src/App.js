@@ -65,7 +65,7 @@ addTodo = (title) => {
         <div className="App">
           <div className='container'>
             <Header />
-            <Route path='/' render={props => (
+            <Route exact path='/' render={props => (
               <React.Fragment>
                   <AddTodo addTodo={this.addTodo} />
                   <Todos todos={this.state.todos}  markComplete={this.markComplete} remove={this.remove}/>

@@ -1,4 +1,5 @@
 import React from 'react';
+import { Link } from 'react-router-dom';
 
 // Functional component that just processes a render
 function Header() {
@@ -7,6 +8,7 @@ function Header() {
             <h1>
                 Todo List
             </h1>
+            <Link style={linkStyle} to='/'>Home</Link> | <Link style={linkStyle} to='/about'>About</Link>
         </header>
     )
 };
@@ -17,5 +19,10 @@ const headerStyle = {
     textAlign: 'center',
     padding: '10px',
 };
+
+const linkStyle = {
+    color: '#fff',
+    textDecoration: 'none',
+}
 
 export default Header;
