@@ -38,10 +38,16 @@ markComplete = (id) => {
   }) });
 };
 
+// Remove todo item
+remove = (id) => {
+  // Use filter method to loop through and returns an array given a condition
+  this.setState({ todos: [...this.state.todos.filter(todo => todo.id !== id)] })
+};
+
   render() {
     return (
       <div className="App">
-        <Todos todos={this.state.todos}  markComplete={this.markComplete}/>
+        <Todos todos={this.state.todos}  markComplete={this.markComplete} remove={this.remove}/>
       </div>
     );
   };
