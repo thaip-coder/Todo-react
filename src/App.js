@@ -24,10 +24,20 @@ class App extends Component {
     ]
   };
 
+markComplete = (id) => {
+  this.setState({ todos: this.state.todos.map(todo => {
+    if(todo.id === id) {
+      // Will set the completed state to the opposite of what it currently is. Toggles completed status.
+      todo.completed = !todo.completed
+    }
+    return todo;
+  }) })
+}
+
 render() {
   return (
     <div className="App">
-      <Todos todos={this.state.todos} />
+      <Todos todos={this.state.todos}  markComplete={this.markComplete}/>
     </div>
   );
 }
