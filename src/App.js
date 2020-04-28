@@ -4,6 +4,7 @@ import Header from './components/layout/Header';
 import './App.css';
 import Todos from './components/Todos';
 import AddTodo from './components/AddTodo';
+import About from './components/pages/About';
 import {v4 as uuid} from 'uuid';
 
 class App extends Component {
@@ -70,6 +71,7 @@ addTodo = (title) => {
                   <Todos todos={this.state.todos}  markComplete={this.markComplete} remove={this.remove}/>
               </React.Fragment>
             )} />
+            <Route path='/about' component={About} />
           </div>
         </div>
       </Router>
