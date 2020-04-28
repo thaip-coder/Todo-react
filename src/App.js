@@ -6,27 +6,34 @@ import Todos from './components/Todos';
 import AddTodo from './components/AddTodo';
 import About from './components/pages/About';
 import {v4 as uuid} from 'uuid';
+import Axios from 'axios';
 
 class App extends Component {
+  // State of todo list tasks
   state = {
     todos: [
-      {
-        id: uuid(),
-        title: 'Take out the trash',
-        completed: false
-      },
-      {
-        id: uuid(),
-        title: 'Dinner with girlfriend',
-        completed: false
-      },
-      {
-        id: uuid(),
-        title: 'Meeting with boss',
-        completed: false
-      },
+      // {
+      //   id: uuid(),
+      //   title: 'Take out the trash',
+      //   completed: false
+      // },
+      // {
+      //   id: uuid(),
+      //   title: 'Dinner with girlfriend',
+      //   completed: false
+      // },
+      // {
+      //   id: uuid(),
+      //   title: 'Meeting with boss',
+      //   completed: false
+      // },
     ]
   };
+
+  componentDidMount() {
+    Axios.get('http://jsonplaceholder.typicode.com/todos?_limit=5')
+      .then(res => this.setState({ todos: res.data }))
+  }
 
 // Method to toggle complete status
 markComplete = (id) => {
@@ -66,11 +73,13 @@ addTodo = (title) => {
           <div className='container'>
             <Header />
             <Route exact path='/' render={props => (
+              // Groups the Todo elements together to access via '/'
               <React.Fragment>
                   <AddTodo addTodo={this.addTodo} />
                   <Todos todos={this.state.todos}  markComplete={this.markComplete} remove={this.remove}/>
               </React.Fragment>
             )} />
+            {/* Route to access about page */}
             <Route path='/about' component={About} />
           </div>
         </div>

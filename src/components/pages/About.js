@@ -1,5 +1,6 @@
 import React from 'react'
 
+// Functional component
 function About() {
     return (
         <React.Fragment>
