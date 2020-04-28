@@ -13,7 +13,9 @@ render() {
 
 // PropTypes
 Todos.propTypes = {
-    todos: PropTypes.array.isRequired
+    todos: PropTypes.array.isRequired,
+    markComplete: PropTypes.func.isRequired,
+    remove: PropTypes.func.isRequired,
 }
 
 export default Todos;
