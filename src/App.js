@@ -32,7 +32,7 @@ class App extends Component {
 
   // Get request to API to retrieve todo list items
   componentDidMount() {
-    Axios.get('http://jsonplaceholder.typicode.com/todos?_limit=5')
+    Axios.get('https://jsonplaceholder.typicode.com/todos?_limit=5')
     // Sets the state to the data from the API
       .then(res => this.setState({ todos: res.data }))
   }
@@ -54,7 +54,7 @@ markComplete = (id) => {
 // Remove todo item
 remove = (id) => {
   // Delete request 
-  Axios.delete(`http://jsonplaceholder.typicode.com/todos/${id}`)
+  Axios.delete(`https://jsonplaceholder.typicode.com/todos/${id}`)
     .then(res => 
       // Use filter method (spread operater) to loop through and returns an array given a condition and return a new array
       this.setState({ todos: [...this.state.todos.filter(todo => todo.id !== id)] }));
@@ -69,7 +69,7 @@ addTodo = (title) => {
   //   completed: false,
   // }
   // Makes post request to same API link as above
-  Axios.post('http://jsonplaceholder.typicode.com/todos', {
+  Axios.post('https://jsonplaceholder.typicode.com/todos', {
     // Sets the title and status of new task
     title: title,
     completed: false,
